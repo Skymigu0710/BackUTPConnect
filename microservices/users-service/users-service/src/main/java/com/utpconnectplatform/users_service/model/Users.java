@@ -1,0 +1,28 @@
+package com.utpconnectplatform.users_service.model;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.util.Set;
+
+@Entity
+@Table(name="users")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class Users {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id_users;
+    @ManyToOne
+    @JoinColumn(name = "id_roles", referencedColumnName = "id") // Definir la foreign key
+    private Roles id_roles;
+    private String name;
+    private String last_name;
+    private String email;
+    private String password;
+}
