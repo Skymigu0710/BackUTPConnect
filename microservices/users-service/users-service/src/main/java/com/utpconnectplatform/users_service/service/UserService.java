@@ -1,7 +1,9 @@
 package com.utpconnectplatform.users_service.service;
 
+import com.utpconnectplatform.users_service.config.RabbitMQConfig;
 import com.utpconnectplatform.users_service.model.Users;
 import com.utpconnectplatform.users_service.repository.UserRepository;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -29,6 +31,12 @@ public class UserService {
             return userOptional.get();
         else
             throw new RuntimeException("No se encontró el usuario con el nombre: " + name);
+    }
+    @RabbitListener(queues = RabbitMQConfig.QUEUE)
+    public void receivMessage(Users user){
+            // Lógica para guardar el usuario en la base de datos
+            userRepository.save(user);
+            System.out.println("Usuario registrado: " + user.getName());
     }
 
 }

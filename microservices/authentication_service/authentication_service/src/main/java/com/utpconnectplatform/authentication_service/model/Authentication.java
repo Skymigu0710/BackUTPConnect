@@ -24,7 +24,5 @@ public class Authentication {
     @Column(name = "password")
     private String pass;
 
-    @Column(name="role")
-    private String role;
 
 }
