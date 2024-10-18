@@ -23,6 +23,7 @@ public class Users {
     private Roles id_roles;
     private String name;
     private String last_name;
+    private String username;
     private String email;
     private String password;
 }
