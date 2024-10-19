@@ -1,0 +1,60 @@
+package com.utpconnectplatform.search_service.model;
+
+
+public class User {
+    private long id_usersp; // Esta será la misma que id_users en Users
+
+    private String bio_text;
+    private String studies;
+    private String birthday;
+    private String profile_img_url;
+    private String cover_img_url;
+
+    public long getId_usersp() {
+        return id_usersp;
+    }
+
+    public void setId_usersp(long id_usersp) {
+        this.id_usersp = id_usersp;
+    }
+
+    public String getBio_text() {
+        return bio_text;
+    }
+
+    public void setBio_text(String bio_text) {
+        this.bio_text = bio_text;
+    }
+
+    public String getStudies() {
+        return studies;
+    }
+
+    public void setStudies(String studies) {
+        this.studies = studies;
+    }
+
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getProfile_img_url() {
+        return profile_img_url;
+    }
+
+    public void setProfile_img_url(String profile_img_url) {
+        this.profile_img_url = profile_img_url;
+    }
+
+    public String getCover_img_url() {
+        return cover_img_url;
+    }
+
+    public void setCover_img_url(String cover_img_url) {
+        this.cover_img_url = cover_img_url;
+    }
+}
