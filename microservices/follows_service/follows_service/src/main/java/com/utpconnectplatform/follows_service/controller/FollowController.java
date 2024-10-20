@@ -17,7 +17,7 @@ public class FollowController {
     public FollowController(FollowService followService) {
         this.followService = followService;
     }
-    @PostMapping//guardar un nuevo gatito
+    @PostMapping
     public ResponseEntity<Follows> saveFollow (@RequestBody Follow_request followsreques){
         return new ResponseEntity<>(followService.saveFollow(followsreques), HttpStatus.CREATED );
     }
