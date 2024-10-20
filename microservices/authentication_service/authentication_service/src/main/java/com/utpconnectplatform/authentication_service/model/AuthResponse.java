@@ -1,5 +1,6 @@
 package com.utpconnectplatform.authentication_service.model;
 
+import com.utpconnectplatform.authentication_service.DTO.UserDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,4 +13,5 @@ import org.hibernate.annotations.SecondaryRow;
 @NoArgsConstructor
 public class AuthResponse {
     String token;
+    private UserDto userDetails;
 }

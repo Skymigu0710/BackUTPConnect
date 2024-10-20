@@ -1,12 +1,23 @@
 package com.utpconnectplatform.users_service.config;
 
+import com.utpconnectplatform.users_service.model.Users;
+import com.utpconnectplatform.users_service.service.UserService;
 import org.springframework.amqp.core.*;
+import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.amqp.rabbit.listener.ConditionalRejectingErrorHandler;
+import org.springframework.amqp.rabbit.listener.FatalExceptionStrategy;
+import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
+import org.springframework.amqp.support.converter.DefaultClassMapper;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.messaging.converter.MappingJackson2MessageConverter;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Configuration
 public class RabbitMQConfig {
@@ -33,9 +44,9 @@ public class RabbitMQConfig {
     }
 
     @Bean
-    public AmqpTemplate getTemplate(ConnectionFactory connectionFactory){
-        RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
-            rabbitTemplate.setMessageConverter(messageConverter());
-            return rabbitTemplate;
+    public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
+        RabbitTemplate template = new RabbitTemplate(connectionFactory);
+        template.setMessageConverter( new Jackson2JsonMessageConverter());
+        return template;
     }
 }

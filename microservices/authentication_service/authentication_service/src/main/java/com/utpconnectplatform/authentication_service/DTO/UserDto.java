@@ -1,30 +1,28 @@
-package com.utpconnectplatform.authentication_service.model;
+package com.utpconnectplatform.authentication_service.DTO;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import jakarta.persistence.*;
+
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 
-@Data
-@AllArgsConstructor
+@Getter
+@Setter
 @NoArgsConstructor
-@JsonIgnoreProperties(ignoreUnknown = true) // Ignora propiedades no reconocidas
-public class User implements UserDetails, Serializable {
-    private static final long serialVersionUID = 1L;
-
+@AllArgsConstructor
+public class UserDto implements UserDetails {
+    private Long id_users;
     private String name;
     private String last_name;
     private String username;
     private String email;
     private String password;
-    private int role;
+    private int id_roles;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

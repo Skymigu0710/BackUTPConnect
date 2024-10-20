@@ -8,10 +8,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class Consumer {
 
+    //cambiar cola
     @RabbitListener(queues = RabbitMQConfig.QUEUE)
     public void consume(Follow_request followRequest){
         System.out.println("Consumer is able to consume message from queue: " + followRequest);
 
-        // Aquí puedes implementar la lógica para guardar la relación de seguidor y seguido en la base de datos.
     }
 }

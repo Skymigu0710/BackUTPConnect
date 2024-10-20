@@ -1,5 +1,6 @@
 package com.utpconnectplatform.authentication_service.model;
 
+import com.utpconnectplatform.authentication_service.DTO.UserDto;
 import com.utpconnectplatform.authentication_service.Service.Userservice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -17,8 +18,8 @@ public class CustomUserDetailsService implements UserDetailsService {
     }
 
     @Override
-    public User loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userService.getUsername(username)
+    public UserDto loadUserByUsername(String username) throws UsernameNotFoundException {
+        return userService.getUserByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
 }
